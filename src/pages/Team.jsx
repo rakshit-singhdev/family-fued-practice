@@ -8,17 +8,29 @@ import StrikePanel from "../components/StrikePanel.jsx";
 import WaitBanner from "../components/team/WaitBanner.jsx";
 import PointsPanel from "../components/PointsPanel.jsx";
 import { useGameStore } from "../store/game.store.js";
+import { teamColours } from "../helper/constants.js";
 
 const Team = () => {
     const teamId = 1;
 
     const { teamNames, phase, buzzWinner, activeTeamId } = useGameStore();
 
+    const scroll = {
+        blue: 'scrollbar-thumb-blue-500',
+        yellow: 'scrollbar-thumb-yellow-500',
+        red: 'scrollbar-thumb-red-500',
+        green: 'scrollbar-thumb-green-500',
+        purple: 'scrollbar-thumb-purple-500',
+        orange: 'scrollbar-thumb-orange-500',
+        pink: 'scrollbar-thumb-pink-500',
+        teal: 'scrollbar-thumb-teal-500',
+    };
+
     return (
         <div className="h-screen flex flex-col text-gray-100 bg-slate-900">
             <TopBar teamId={teamId} />
-            <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-amber-500">
-                <Scores teamId={teamId}/>
+            <div className={`flex-1 overflow-y-auto scrollbar-thin ${scroll[teamColours[teamId]]}`}>
+                <Scores teamId={teamId} />
                 <WaitBanner active={teamId == activeTeamId} />
                 <QuestionBox />
                 {

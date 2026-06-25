@@ -16,7 +16,7 @@ const Host = () => {
                 "
             >
                 <TopBar  />
-                <div className="flex-1 py-4 px-5 overflow-y-auto scrollbar-thin scrollbar-thumb-amber-500 ">
+                <div className="flex-1 py-4 px-5 overflow-y-auto scrollbar-thin scrollbar-thumb-orange-900">
                     <QuestionBox />
                     <Banner />
                     <div className="flex flex-col-reverse md:flex-row py-12 w-full gap-4 md:items-center">
