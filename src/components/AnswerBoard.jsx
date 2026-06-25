@@ -1,3 +1,5 @@
+import { useGameStore } from "../store/game.store.js";
+
 const AnswerBlock = ({ number, answer }) => {
     const revealed = answer?.revealed;
     return (
@@ -37,7 +39,9 @@ const AnswerBlock = ({ number, answer }) => {
     );
 };
 
-const AnswerBoard = ({ questionStatus = true, answers = [] }) => {
+const AnswerBoard = ({ questionStatus = true }) => {
+
+    const { answers } = useGameStore()
 
     const totalTiles = Math.max(8, answers.length);
 

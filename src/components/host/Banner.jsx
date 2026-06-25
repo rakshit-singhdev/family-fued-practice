@@ -1,18 +1,20 @@
+import { useGameStore } from "../../store/game.store.js"
 
-const Banner = ({ teamName = "Sample Name" }) => {
+const Banner = () => {
+    const { buzzWinner, teamNames } = useGameStore();
     return (
         <div className="h-1/7 mt-4 overflow-hidden perspective-midrange">
             <div className={`
             relative w-full h-full
             transform-3d
-            ${teamName ?
+            ${teamNames[buzzWinner] ?
                     "animate-[bannerSlide_0.4s_ease-out]"
                     :
                     ""
                 }
             `}>
                 <div className="flex flex-col absolute inset-0">
-                    {teamName &&
+                    {teamNames[buzzWinner] &&
                         <div className="flex p-2 items-center justify-center w-full border-2 border-orange-400 rounded-2xl gap-3 text-lg bg-orange-950">
                             <span className="animate-bounce">🔔</span><span className="text-yellow-600">Buzzed First: </span>
                             <span className="
@@ -20,7 +22,7 @@ const Banner = ({ teamName = "Sample Name" }) => {
                                 font-black
                                 text-white
                                 ">
-                                {teamName}
+                                {teamNames[buzzWinner]}
                             </span>
                         </div>
                     }

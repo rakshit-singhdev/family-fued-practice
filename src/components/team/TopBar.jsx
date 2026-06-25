@@ -1,4 +1,5 @@
 import { teamColours, phaseColors } from "../../helper/constants.js";
+import { useGameStore } from "../../store/game.store.js";
 
 const colours = {
     blue: {
@@ -35,7 +36,9 @@ const colours = {
     },
 };
 
-const TopBar = ({ teamId, name, phase = "idle", round = 1 }) => {
+const TopBar = ({ teamId }) => {
+    const { teamNames, phase, round } = useGameStore();
+    const name = teamNames[teamId];
     const colour = colours[teamColours[teamId]];
 
     return (

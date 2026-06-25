@@ -1,6 +1,7 @@
 import { phaseColors } from "../../helper/constants.js";
+import { useGameStore } from "../../store/game.store.js";
 
-const TeamScore = ({ name, score, active = true }) => {
+const TeamScore = ({ name, score, active }) => {
     return (
         <div
             className={`
@@ -58,7 +59,7 @@ const TeamScore = ({ name, score, active = true }) => {
 
 export const Logo = ({ phase, round }) => {
 
-    
+
     return (
         <div className="
             flex-1 text-center
@@ -82,21 +83,24 @@ export const Logo = ({ phase, round }) => {
     )
 }
 
-const TopBar = ({ team1name = "sample Team 1", team2name = "sample Team 2", phase = "idle", round = 0 }) => {
+const TopBar = () => {
+
+    const { teamNames, scores, activeTeamId, phase, round } = useGameStore();
+
     return (
         <div className="border-b-2 border-amber-600 bg-[linear-gradient(180deg,#1a0a00,#2d1500)] shadow-lg shadow-amber-600/30">
             <div className="md:hidden flex flex-col gap-4 items-center px-6 py-2">
                 <Logo phase={phase} round={round} />
                 <div className="flex justify-between w-full">
-                    <TeamScore name={team1name} score={0} />
-                    <TeamScore name={team2name} score={0} />
+                    <TeamScore name={teamNames[0]} score={scores[0]} active={activeTeamId == 0} />
+                    <TeamScore name={teamNames[1]} score={scores[1]} active={activeTeamId == 1} />
                 </div>
             </div>
 
             <div className="hidden md:flex items-center justify-between gap-4 px-6 py-2">
-                <TeamScore name={team1name} score={0} />
+                <TeamScore name={teamNames[0]} score={scores[0]} active={activeTeamId == 0} />
                 <Logo phase={phase} round={round} />
-                <TeamScore name={team2name} score={0} />
+                <TeamScore name={teamNames[1]} score={scores[1]} active={activeTeamId == 1} />
             </div>
         </div>
     );

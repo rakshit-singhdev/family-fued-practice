@@ -1,6 +1,9 @@
+import { useGameStore } from "../store/game.store.js"
 import { Strike } from "./Strike.jsx"
 
-const StrikePanel = ({ strikes = 2 }) => {
+const StrikePanel = () => {
+
+    const { strikes } = useGameStore();
 
     return (
         <div className="block flex-1 border-2 border-slate-700  p-4 rounded-2xl bg-slate-800">

@@ -1,4 +1,5 @@
 import { teamColours } from "../../helper/constants.js";
+import { useGameStore } from "../../store/game.store.js";
 
 // tailwind dos'nt supports dyanamic class
 
@@ -53,15 +54,15 @@ const teamColorClasses = {
     },
 };
 
-const ScoreBox = ({ self, score, name, colour }) => {
-
+const ScoreBox = ({ self, score, name, colour, active }) => {
     return (
         <div
             className={`
                 flex flex-col
                 ${teamColorClasses[colour].bg}
                 ${teamColorClasses[colour].border}
-                border-2 p-4 text-center rounded-xl
+                ${active ? 'border-4' : 'border-2'}
+                p-4 text-center rounded-xl
             `}
         >
             <span className={`${teamColorClasses[colour].light} text-xs font-semibold uppercase`}>
@@ -79,13 +80,16 @@ const ScoreBox = ({ self, score, name, colour }) => {
     );
 };
 
-const Scores = ({ teamId, scores, names }) => {
+const Scores = ({ teamId }) => {
+    const { scores, teamNames, activeTeamId } = useGameStore();
+
     return (
         <div className="grid grid-cols-2 gap-3 px-4 pt-4">
             <ScoreBox
                 score={scores[teamId]}
-                name={names[teamId]}
+                name={teamNames[teamId]}
                 colour={teamColours[teamId]}
+                active={activeTeamId === teamId}
                 self
             />
 
@@ -94,8 +98,9 @@ const Scores = ({ teamId, scores, names }) => {
                     <ScoreBox
                         key={index}
                         score={score}
-                        name={names[index]}
+                        name={teamNames[index]}
                         colour={teamColours[index]}
+                        active={activeTeamId === index}
                     />
                 ) : null
             )}

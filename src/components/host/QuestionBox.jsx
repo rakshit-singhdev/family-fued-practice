@@ -1,3 +1,5 @@
+import { useGameStore } from "../../store/game.store.js";
+
 const CurrentTeam = ({ currTeam }) => {
     return (
         <div className="flex flex-col gap-2 w-min h-min bg-yellow-600 border border-yellow-400 rounded-lg px-3 py-1.5 text-center shadow-[0_0_20px_rgba(250,204,21,0.3)]">
@@ -12,7 +14,10 @@ const CurrentTeam = ({ currTeam }) => {
 }
 
 
-const QuestionBox = ({ question ="Name a reason someone might be late for work", currTeam = "Sample Team 1" }) => {
+const QuestionBox = () => {
+
+    const { teamNames, activeTeamId, question } = useGameStore();
+
     return (
         <div className="
         flex justify-between
@@ -26,20 +31,20 @@ const QuestionBox = ({ question ="Name a reason someone might be late for work",
             <div className="
             flex flex-col 
             ">
-                <p className="
-                text-xs uppercase text-gray-500
-                tracking-wider
-                ">
-                    Survey Says...
-                </p>
                 <h1 className="
                 font-bold text-xl text-amber-50
                 ">
                     {question ?? 'Waiting for question...'}
                 </h1>
+                <p className="
+                    text-xs uppercase text-gray-500
+                    tracking-wider
+                    ">
+                    Survey Says...
+                </p>
             </div>
             {
-                currTeam && <CurrentTeam currTeam={currTeam} />
+                teamNames[activeTeamId] && <CurrentTeam currTeam={teamNames[activeTeamId]} />
             }
         </div>
     )
