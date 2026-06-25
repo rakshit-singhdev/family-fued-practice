@@ -4,7 +4,7 @@ import Buzzer from "../components/team/Buzzer.jsx";
 import AnswerBoard from "../components/AnswerBoard.jsx";
 import QuestionBox from "../components/team/QuestionBox.jsx";
 import BuzzerResult from "../components/team/BuzzerResult.jsx";
-import StrikePanel from "../components/team/StrikePanel.jsx";
+import StrikePanel from "../components/StrikePanel.jsx";
 import WaitBanner from "../components/team/WaitBanner.jsx";
 import PointsPanel from "../components/PointsPanel.jsx";
 
@@ -38,7 +38,7 @@ const Team = () => {
                     phase == 'face_off' && buzzWinner != null &&
                     <BuzzerResult isMe={buzzWinner == teamId} name={names[buzzWinner]} />
                 }
-                <div className="grid grid-cols-2  m-2 p-2">
+                <div className="flex flex-row gap-4 m-4">
                     <StrikePanel /><PointsPanel />
                 </div>
                 <QuestionBox />
