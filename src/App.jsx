@@ -1,7 +1,17 @@
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
+import socketService from "./services/socket.service.js";
 
 const App = () => {
+    useEffect(() => {
+        socketService.connect();
+
+        return () => {
+            socketService.disconnect();
+        };
+    }, []);
+    
     return (
         <>
             <Outlet />

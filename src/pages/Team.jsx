@@ -7,23 +7,12 @@ import BuzzerResult from "../components/team/BuzzerResult.jsx";
 import StrikePanel from "../components/StrikePanel.jsx";
 import WaitBanner from "../components/team/WaitBanner.jsx";
 import PointsPanel from "../components/PointsPanel.jsx";
+import { useGameStore } from "../store/game.store.js";
 
 const Team = () => {
 
-    const teamId = 1;
-
-    const names = [
-        "Sample Team 1",
-        "Sample Team 2"
-    ];
-
-    const scores = [0, 0];
-
-    const phase = 'play'
-
-    const buzzWinner = 0;
-    // const turn = 1;
-
+    const { teamId, teamNames:names, scores, phase, buzzWinner } = useGameStore();
+    
     return (
         <div className="h-screen flex flex-col text-gray-100 bg-slate-900">
             <TopBar teamId={teamId} name={names[teamId]} />
