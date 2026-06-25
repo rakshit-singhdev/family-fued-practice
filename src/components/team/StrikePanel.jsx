@@ -1,5 +1,4 @@
-import { Strike } from "../host/StrikePanel.jsx"
-
+import { Strike } from "../Strike.jsx"
 
 const StrikePanel = ({ strikes=2 }) => {
     

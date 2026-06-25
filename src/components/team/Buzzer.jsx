@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "sonner";
 
 const Buzzer = () => {
 
@@ -13,7 +14,10 @@ const Buzzer = () => {
 
         await new Promise(resolve => setTimeout(resolve, 1000));
 
-        alert("Buzzer pressed");
+        toast.info("Buzzer press registered!", {
+            duration: 1000,
+        });
+
     };
 
     return (

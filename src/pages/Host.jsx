@@ -1,6 +1,6 @@
 import AnswerBoard from "../components/host/AnswerBoard.jsx";
 import Banner from "../components/host/Banner.jsx";
-import PointsPanel from "../components/host/PointsPanel.jsx";
+import PointsPanel from "../components/PointsPanel.jsx";
 import QuestionBox from "../components/host/QuestionBox.jsx";
 import StrikePanel from "../components/host/StrikePanel.jsx";
 import TopBar from "../components/host/TopBar.jsx";
@@ -45,13 +45,12 @@ const Host = () => {
             <div
                 className="
             h-screen flex flex-col text-gray-50
-            bg-slate-950
+            bg-slate-950 
             bg-(image:--background-host) 
             "
             >
                 <TopBar />
-
-                <div className="flex-1 py-4 px-5 overflow-scroll scrollbar-thin scrollbar-thumb-amber-500">
+                <div className="flex-1 py-4 px-5 overflow-y-auto scrollbar-thin scrollbar-thumb-amber-500 ">
                     <QuestionBox />
                     <Banner />
                     <div className="flex flex-col md:flex-row py-12 w-full gap-4 md:items-center">

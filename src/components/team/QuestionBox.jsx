@@ -1,4 +1,4 @@
-const QuestionBox = ({ question ="Name a reason someone might be late for work" }) => {
+const QuestionBox = ({ question }) => {
     return (
         <div className="
         flex justify-between
