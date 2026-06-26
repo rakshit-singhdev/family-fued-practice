@@ -1,13 +1,15 @@
 import { useGameStore } from "../../store/game.store.js"
 
 const Banner = () => {
+
     const { buzzWinner, teamNames } = useGameStore();
+
     return (
         <div className="h-1/7 mt-4 overflow-hidden perspective-midrange">
             <div className={`
-            relative w-full h-full
-            transform-3d
-            ${teamNames[buzzWinner] ?
+                relative w-full h-full
+                transform-3d
+                ${teamNames[buzzWinner] ?
                     "animate-[bannerSlide_0.4s_ease-out]"
                     :
                     ""

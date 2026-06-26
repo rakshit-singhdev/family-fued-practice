@@ -11,6 +11,7 @@ import { useGameStore } from "../store/game.store.js";
 import { teamColours } from "../helper/constants.js";
 
 const Team = () => {
+
     const teamId = 1;
 
     const { teamNames, phase, buzzWinner, activeTeamId } = useGameStore();
@@ -42,8 +43,11 @@ const Team = () => {
                     <BuzzerResult isMe={buzzWinner == teamId} name={teamNames[buzzWinner]} />
                 }
                 <div className="flex flex-row gap-4 md:m-4 mr-4">
-                    <div className="md:w-1/12"></div>
-                    <div className="flex w-11/12">
+
+                    <div className="hidden md:block md:invisible">
+                        <PointsPanel />
+                    </div>
+                    <div className="flex w-11/12 ml-4 md:ml-0">
                         <StrikePanel />
                     </div>
                     <div className="flex">

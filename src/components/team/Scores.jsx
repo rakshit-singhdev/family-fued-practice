@@ -81,6 +81,7 @@ const ScoreBox = ({ self, score, name, colour, active }) => {
 };
 
 const Scores = ({ teamId }) => {
+    
     const { scores, teamNames, activeTeamId } = useGameStore();
 
     return (
